@@ -1,0 +1,35 @@
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 40;
+}
+
+.svgIcon {
+  width: 12px;
+}
+
+.svgIcon path {
+  fill: var(--color-secondary-foreground);
+}
+
+.button:hover {
+  background-color: var(--color-primary);
+}
+
+.button:hover .svgIcon path {
+  fill: var(--color-primary-foreground);
+}
+
+.text {
+  display: none;
+}

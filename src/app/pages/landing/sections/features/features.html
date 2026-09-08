@@ -1,0 +1,26 @@
+<section id="features" class="scroll-mt-24 container mx-auto px-4 py-16 md:py-24">
+  <div class="mb-10 md:mb-14">
+    <app-section-header
+      label="Why it works"
+      title="Furniture that earns its square metres"
+      lead="Every piece is a mechanism and a material decision — not a compromise between beauty and space."
+    />
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2">
+    @for (feature of features; track feature.title) {
+      <article class="rounded-2xl border border-border bg-card/40 p-6 md:p-8">
+        <span
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary"
+          aria-hidden="true"
+        >
+          <app-icon [src]="feature.icon" svgClass="h-5 w-5" />
+        </span>
+        <h3 class="mt-5 font-display text-lg font-semibold text-title">{{ feature.title }}</h3>
+        <p class="mt-2 text-sm font-light leading-relaxed text-muted-foreground">
+          {{ feature.body }}
+        </p>
+      </article>
+    }
+  </div>
+</section>

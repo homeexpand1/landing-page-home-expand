@@ -1,0 +1,15 @@
+<div [class]="align() === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'">
+  @if (label()) {
+    <p class="section-label">{{ label() }}</p>
+  }
+
+  @if (headingLevel() === 'h1') {
+    <h1 class="section-title mt-2">{{ title() }}</h1>
+  } @else {
+    <h2 class="section-title mt-2">{{ title() }}</h2>
+  }
+
+  @if (lead()) {
+    <p class="section-lead" [class.mx-auto]="align() === 'center'">{{ lead() }}</p>
+  }
+</div>

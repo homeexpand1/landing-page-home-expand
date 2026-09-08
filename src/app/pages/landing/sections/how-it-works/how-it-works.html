@@ -1,0 +1,19 @@
+<section id="how-it-works" class="scroll-mt-24 container mx-auto px-4 py-16 md:py-24">
+  <div class="mb-10 md:mb-14">
+    <app-section-header
+      label="The process"
+      title="From first message to a table that moves"
+      lead="Every Home Expand piece is manufactured to order. We give you time to get the finish right — then we build it for your home."
+    />
+  </div>
+
+  <ol class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    @for (step of steps; track step.number) {
+      <li class="relative">
+        <p class="font-display text-4xl font-semibold text-primary/25">{{ step.number }}</p>
+        <h3 class="mt-3 font-display text-xl font-semibold text-title">{{ step.title }}</h3>
+        <p class="mt-2 text-sm font-light leading-relaxed text-muted-foreground">{{ step.body }}</p>
+      </li>
+    }
+  </ol>
+</section>

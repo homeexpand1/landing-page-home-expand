@@ -1,12 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ThemeService } from './core/services/theme.service';
+import { BackToTop } from './layout/back-to-top/back-to-top';
+import { Footer } from './layout/footer/footer';
+import { Navbar } from './layout/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Navbar, Footer, BackToTop],
   templateUrl: './app.html',
-  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('landing-page-home-expand');
+  private readonly theme = inject(ThemeService);
 }

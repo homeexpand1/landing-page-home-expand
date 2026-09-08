@@ -1,3 +1,202 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* Home Expand — brand design system (official palette #183840) */
 @import 'tailwindcss';
+
+@theme {
+  --shadow-custom: 0 18px 50px -24px rgb(24 56 64 / 22%);
+  --shadow-soft: 0 4px 24px -8px rgb(24 56 64 / 12%);
+  --shadow-lift: 0 20px 40px -20px rgb(24 56 64 / 24%);
+
+  --font-display: 'Syne', 'system-ui', 'sans-serif';
+  --font-body: 'Manrope', 'system-ui', 'sans-serif';
+  --font-poppins: 'Manrope', 'system-ui', 'sans-serif';
+  --font-sans: 'Manrope', 'system-ui', 'sans-serif';
+  --font-serif: 'Syne', 'system-ui', 'sans-serif';
+  --font-montserrat: 'Manrope', 'system-ui', 'sans-serif';
+
+  /* Official brand teal #183840 + clean neutrals */
+  --color-background: hsl(180 10% 98%);
+  --color-foreground: hsl(192 45% 12%);
+  --color-card: hsl(180 12% 96%);
+  --color-card-foreground: hsl(192 45% 12%);
+  --color-surface: hsl(180 14% 94%);
+  --color-primary: hsl(192 45% 17%); /* #183840 */
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(192 20% 10%);
+  --color-secondary-foreground: hsl(180 10% 98%);
+  --color-tertiary: hsl(192 30% 28%);
+  --color-tertiary-foreground: hsl(0 0% 100%);
+  --color-quaternary: hsl(192 25% 22%);
+  --color-quaternary-foreground: hsl(0 0% 100%);
+  --color-title: hsl(192 45% 14%);
+  --color-title-foreground: hsl(0 0% 100%);
+  --color-muted: hsl(180 10% 88%);
+  --color-muted-foreground: hsl(192 12% 40%);
+  --color-border: hsl(180 12% 88%);
+
+  --color-light: #f4f6f6;
+  --color-vivid-orange: #c45c26;
+  --color-deep-blue: #183840;
+  --color-success: #2f6b4f;
+  --color-error: #b33a2b;
+  --color-brand: #183840;
+}
+
+.dark {
+  --color-background: hsl(192 30% 8%);
+  --color-foreground: hsl(180 10% 96%);
+  --color-card: hsl(192 25% 12%);
+  --color-card-foreground: hsl(180 10% 96%);
+  --color-surface: hsl(192 22% 14%);
+  --color-primary: hsl(192 35% 42%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(180 10% 96%);
+  --color-secondary-foreground: hsl(192 30% 10%);
+  --color-tertiary: hsl(192 28% 38%);
+  --color-tertiary-foreground: hsl(0 0% 100%);
+  --color-quaternary: hsl(192 22% 32%);
+  --color-quaternary-foreground: hsl(0 0% 100%);
+  --color-title: hsl(180 10% 96%);
+  --color-title-foreground: hsl(192 30% 10%);
+  --color-muted: hsl(192 15% 20%);
+  --color-muted-foreground: hsl(180 8% 65%);
+  --color-border: hsl(192 15% 22%);
+  --shadow-custom: 0 18px 50px -24px rgb(0 0 0 / 45%);
+  --shadow-soft: 0 4px 24px -8px rgb(0 0 0 / 35%);
+  --shadow-lift: 0 20px 40px -20px rgb(0 0 0 / 50%);
+}
+
+@layer base {
+  input,
+  textarea,
+  select {
+    @apply w-full rounded-lg border border-border bg-background px-3.5 py-3 text-sm text-foreground placeholder-muted-foreground;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 15%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-primary;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-semibold tracking-tight text-title md:text-4xl lg:text-5xl;
+  }
+
+  .section-lead {
+    @apply mt-3 max-w-xl text-base font-light leading-relaxed text-muted-foreground md:text-lg;
+  }
+
+  .nav-link-item {
+    @apply relative inline-flex items-center text-xs font-semibold uppercase tracking-[0.16em] text-title hover:text-primary;
+  }
+
+  .icon-mask {
+    display: inline-block;
+    flex-shrink: 0;
+    background-color: currentColor;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground;
+  }
+
+  .brand-logo {
+    width: 8rem;
+    object-fit: contain;
+  }
+
+  .dark .brand-logo {
+    filter: brightness(0) invert(1);
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  scrollbar-color: var(--color-primary) var(--color-background);
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.btn-primary,
+.btn-secondary {
+  @apply relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-6 py-3 text-center text-sm font-semibold tracking-wide;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground shadow-soft;
+
+  &:hover {
+    @apply bg-primary/90;
+  }
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground;
+
+  &:hover {
+    @apply bg-secondary/90;
+  }
+}
+
+.btn-outline {
+  @apply relative inline-flex cursor-pointer items-center justify-center rounded-full border border-primary/25 bg-transparent px-6 py-3 text-center text-sm font-semibold tracking-wide text-title hover:border-primary hover:bg-primary hover:text-primary-foreground;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+

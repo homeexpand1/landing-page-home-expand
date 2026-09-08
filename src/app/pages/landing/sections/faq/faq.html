@@ -1,0 +1,67 @@
+<section id="faq" class="scroll-mt-24 bg-surface">
+  <div class="container mx-auto flex flex-col gap-10 px-4 py-16 lg:flex-row lg:gap-14 md:py-24">
+    <div class="lg:w-2/5">
+      <app-section-header
+        label="Help centre"
+        title="Questions before you visit"
+        lead="Dimensions, delivery, installation, and warranty — the short version. Tap a question to read more."
+      />
+      <a [href]="whatsappLink" class="btn-primary mt-8 inline-flex gap-2" target="_blank" rel="noopener noreferrer">
+        <app-icon src="icons/solid/envelope.svg" svgClass="h-4 w-4" />
+        Still need help? WhatsApp us
+      </a>
+    </div>
+
+    <div class="flex flex-col gap-3 lg:w-3/5">
+      @for (item of faqs; track item.question; let i = $index) {
+        <article
+          class="overflow-hidden rounded-2xl border bg-card/50 shadow-sm"
+          [class]="
+            isOpen(i) ? 'border-primary ring-1 ring-primary/20' : 'border-border hover:border-primary/40'
+          "
+        >
+          <h3>
+            <button
+              type="button"
+              class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-title"
+              [attr.aria-expanded]="isOpen(i)"
+              [attr.aria-controls]="'faq-panel-' + i"
+              [id]="'faq-button-' + i"
+              (click)="toggle(i)"
+            >
+              <span class="text-sm leading-snug md:text-base">{{ item.question }}</span>
+              <span
+                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+                [class]="isOpen(i) ? 'bg-primary text-white' : 'bg-primary/10 text-primary'"
+                aria-hidden="true"
+              >
+                <svg
+                  class="h-4 w-4"
+                  [class.rotate-180]="isOpen(i)"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </button>
+          </h3>
+          @if (isOpen(i)) {
+            <div
+              class="border-t border-border/60 px-5 pb-5 text-sm leading-relaxed text-muted-foreground md:text-base"
+              [id]="'faq-panel-' + i"
+              role="region"
+              [attr.aria-labelledby]="'faq-button-' + i"
+            >
+              <p class="pt-4">{{ item.answer }}</p>
+            </div>
+          }
+        </article>
+      }
+    </div>
+  </div>
+</section>

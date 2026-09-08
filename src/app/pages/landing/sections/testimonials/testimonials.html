@@ -1,0 +1,32 @@
+<section class="container mx-auto px-4 py-16 md:py-24" aria-label="Testimonials">
+  <div class="mb-10 md:mb-14">
+    <app-section-header
+      label="In their homes"
+      title="The table that only comes out when you need it — until you use it every night"
+      lead="From first-home apartments to family villas, the same brief: more life, less furniture."
+    />
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-3">
+    @for (item of testimonials; track item.name) {
+      <figure
+        class="flex h-full flex-col rounded-2xl border border-border bg-card/40 p-6 shadow-sm md:p-8"
+      >
+        <blockquote class="flex-1 text-sm font-light leading-relaxed text-foreground md:text-base">
+          “{{ item.quote }}”
+        </blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <span
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 font-display text-sm font-semibold text-primary"
+            aria-hidden="true"
+            >{{ item.initials }}</span
+          >
+          <span>
+            <span class="block text-sm font-semibold text-title">{{ item.name }}</span>
+            <span class="block text-xs text-muted-foreground">{{ item.role }}</span>
+          </span>
+        </figcaption>
+      </figure>
+    }
+  </div>
+</section>

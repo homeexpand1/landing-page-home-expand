@@ -1,0 +1,16 @@
+<section class="border-y border-border bg-surface/60" aria-label="Trust indicators">
+  <div class="container mx-auto px-4 py-10 md:py-12">
+    <ul class="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6">
+      @for (stat of stats; track stat.label) {
+        <li class="text-center md:text-left">
+          <p class="font-display text-3xl font-semibold tracking-tight text-title md:text-4xl">
+            {{ stat.value }}
+          </p>
+          <p class="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            {{ stat.label }}
+          </p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
